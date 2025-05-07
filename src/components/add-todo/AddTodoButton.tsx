@@ -9,7 +9,7 @@ export const AddTodoButton = () => {
   const addTodo = useSetAtom(addTodoAtom);
 
   const handleAdd = () => {
-    addTodo('new');
+    addTodo('пусто');
   };
 
   return (
@@ -20,7 +20,7 @@ export const AddTodoButton = () => {
       size="lg"
       aria-label="Добавить задачу"
     >
-      <Plus size={80} />
+      <Plus className="min-h-5 min-w-5" />
     </Button>
   );
 };

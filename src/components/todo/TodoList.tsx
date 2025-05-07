@@ -14,7 +14,7 @@ export const TodoList = () => {
   }, []);
 
   return (
-    <div className="space-y-2 px-2 pb-20 pt-[72px] min-h-screen">
+    <div className="space-y-2 px-2 pb-20 pt-[72px]">
       {isClient && todos.length > 0 ? (
         [...todos]
           .sort((a, b) => b.createdAt - a.createdAt)
@@ -22,7 +22,7 @@ export const TodoList = () => {
             <TodoCard key={todo.id} todo={todo} className="bg-white" />
           ))
       ) : (
-        <div className="flex justify-center items-center h-full text-center text-gray-500">
+        <div className="flex justify-start items-center h-full text-center text-gray-500">
           {isClient ? 'пусто' : ''}
         </div>
       )}

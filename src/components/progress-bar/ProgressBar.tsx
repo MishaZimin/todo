@@ -32,7 +32,13 @@ export const ProgressBar = ({
               backgroundColor: shouldHighlight ? activeColor : '#e5e7eb',
               opacity: hoverIndex !== null && i <= hoverIndex ? 0.9 : 1,
             }}
-            onClick={() => onChange(i + 1)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onChange(i + 1);
+            }}
+            onTouchStart={(e) => {
+              e.stopPropagation();
+            }}
             onMouseEnter={() => setHoverIndex(i)}
             onMouseLeave={() => setHoverIndex(null)}
             aria-label={`Установить ${(i + 1) * 10}% выполнения`}
