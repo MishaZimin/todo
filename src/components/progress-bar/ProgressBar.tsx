@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 const getMacColor = (value: number): string => {
-  if (value <= 3) return '#ff5f57';
+  if (value <= 2) return '#ff5f57';
   if (value <= 6) return '#febc2e';
   return '#28c840';
 };

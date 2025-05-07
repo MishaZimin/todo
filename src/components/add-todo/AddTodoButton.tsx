@@ -9,7 +9,7 @@ export const AddTodoButton = () => {
   const addTodo = useSetAtom(addTodoAtom);
 
   const handleAdd = () => {
-    addTodo('пусто');
+    addTodo('');
   };
 
   return (
