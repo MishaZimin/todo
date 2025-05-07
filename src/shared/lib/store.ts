@@ -8,10 +8,10 @@ export const addTodoAtom = atom(null, (get, set, text: string) => {
   const newTodo: Todo = {
     id: Date.now().toString(),
     text,
-    progress: 0, // По умолчанию 0%
+    progress: 0,
     createdAt: Date.now(),
   };
-  set(todosAtom, [...get(todosAtom), newTodo]);
+  set(todosAtom, [newTodo, ...get(todosAtom)]);
 });
 
 export const updateTodoAtom = atom(null, (get, set, updatedTodo: Todo) => {
