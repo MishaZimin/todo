@@ -6,7 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen mx-auto max-w-[500px] relative">
+    <div className="mx-auto max-w-[500px] relative">
       <Header />
       <TodoList />
       <Footer />
