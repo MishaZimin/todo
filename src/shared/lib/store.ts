@@ -9,7 +9,6 @@ export const addTodoAtom = atom(null, (get, set, text: string) => {
     id: Date.now().toString(),
     text,
     progress: 0,
-    createdAt: Date.now(),
   };
   set(todosAtom, [newTodo, ...get(todosAtom)]);
 });

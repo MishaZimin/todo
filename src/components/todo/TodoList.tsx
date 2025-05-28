@@ -33,7 +33,7 @@ export const TodoList = () => {
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
-        distance: 8, // Нужно переместить на 8px для активации drag
+        distance: 8,
       },
     }),
     useSensor(KeyboardSensor, {
