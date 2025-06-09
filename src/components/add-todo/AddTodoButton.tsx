@@ -14,7 +14,8 @@ export const AddTodoButton = () => {
 
   return (
     <Button
-      className="w-full h-[56px] rounded-0"
+      // className="w-full h-[56px] rounded-0"
+      className="mx-auto bg-white/30 hover:bg-white/40 border border-gray-200 backdrop-blur-md w-16 rounded-full text-2xl"
       variant={'ghost'}
       onClick={handleAdd}
       size="lg"

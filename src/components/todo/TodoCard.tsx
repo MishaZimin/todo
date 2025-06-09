@@ -37,7 +37,10 @@ export const TodoCard = ({ todo, className = '' }: TodoCardProps) => {
     setSwiped(false);
   };
 
-  const handleTextChange = (value: string) => setEditedText(value);
+  const handleTextChange = (value: string) => {
+    setEditedText(value);
+    updateTodo({ ...todo, text: value });
+  };
 
   const handleCommitEdit = (e: React.FocusEvent | React.KeyboardEvent) => {
     if ('key' in e && e.key !== 'Enter') return;
@@ -62,7 +65,7 @@ export const TodoCard = ({ todo, className = '' }: TodoCardProps) => {
   return (
     <div
       {...handlers}
-      className={`relative overflow-hidden transition-all duration-300 ease-in-out transform ${className} ${
+      className={`px-2 relative overflow-hidden transition-all duration-300 ease-in-out transform ${className} ${
         isExiting
           ? 'opacity-0 scale-95 -translate-x-2'
           : isMounted
@@ -79,7 +82,7 @@ export const TodoCard = ({ todo, className = '' }: TodoCardProps) => {
 
       <div
         className={`transition-transform duration-300 ${
-          swiped ? '-translate-x-[184px]' : ''
+          swiped ? '-translate-x-[188px]' : '-translate-x-[-0px]'
         }`}
       >
         <TodoContent

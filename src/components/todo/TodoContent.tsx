@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRef, useEffect } from 'react';
 import { ProgressBar } from '../progress-bar/ProgressBar';
@@ -28,47 +29,37 @@ export const TodoContent = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (isEditing) inputRef.current?.focus();
+    if (isEditing) {
+      inputRef.current?.focus();
+      onTextChange(text);
+    }
   }, [isEditing]);
 
   return (
     <div
-      className={`relative bg-gray-100 rounded-[16px] p-1.5 transition-transform duration-300 ${
-        isFrozen ? 'pointer-events-none' : ''
+      className={`relative bg-gray-100 border border-gray-200 rounded-[24px] p-1.5 transition-all duration-300 ${
+        isFrozen ? 'pointer-events-none bg-gray-50' : ''
       }`}
     >
       {isFrozen && (
-        <div
-          className="absolute inset-0 rounded-[16px] pointer-events-none"
-          style={{
-            background: `
-      radial-gradient(circle at center, #e0f2fe 0%, #7dd3fc 100%),
-      linear-gradient(to bottom, #7dd3fc 0%, transparent 50%, #7dd3fc 100%)
-    `,
-            opacity: 0.4,
-            backgroundBlendMode: 'soft-light',
-          }}
-        />
+        <div className="absolute inset-0 rounded-[24px] bg-gray-100/80  pointer-events-none" />
       )}
 
-      <div
-        className="px-2 py-0.5 min-h-[32px] w-[calc(100%_-_50px)]"
-        onClick={onClick}
-      >
-        {isEditing ? (
-          <input
-            ref={inputRef}
-            value={editedText}
-            onChange={(e) => onTextChange(e.target.value)}
-            onBlur={onTextCommit}
-            onKeyDown={onTextCommit}
-            className="w-full bg-transparent border-none outline-none text-gray-800 font-medium text-lg"
-          />
-        ) : (
-          <p className="text-gray-800 font-medium break-words text-lg">
-            {text}
-          </p>
-        )}
+      <div className="px-2 py-0.5 min-h-[32px] w-full" onClick={onClick}>
+        <input
+          ref={inputRef}
+          readOnly={!isEditing}
+          value={editedText}
+          onChange={(e) => onTextChange(e.target.value)}
+          onBlur={onTextCommit}
+          onKeyDown={(e) => e.key === 'Enter' && onTextCommit(e)}
+          className={`w-full bg-transparent border-none outline-none text-gray-800 font-medium text-lg ${
+            isEditing ? 'cursor-text' : 'cursor-pointer'
+          }`}
+          onClick={(e) => {
+            if (!isEditing) onClick(e);
+          }}
+        />
       </div>
 
       <div className="mt-1">

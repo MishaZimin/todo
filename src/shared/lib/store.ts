@@ -22,7 +22,6 @@ export const updateTodoAtom = atom(null, (get, set, updatedTodo: Todo) => {
   );
 });
 
-// Атом для удаления задачи
 export const deleteTodoAtom = atom(null, (get, set, id: string) => {
   set(
     todosAtom,

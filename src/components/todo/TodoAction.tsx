@@ -12,29 +12,29 @@ export const TodoActions = ({
   isFrozen,
   onDelete,
   onFreeze,
-}: TodoActionsProps) => (
-  <>
-    <button
-      onClick={onFreeze}
-      aria-label={isFrozen ? 'Разморозить задачу' : 'Заморозить задачу'}
-      className={`absolute top-0 right-[92px] h-full w-22 rounded-[16px] bg-blue-500/90 hover:bg-blue-500/80 flex items-center justify-center transition-transform duration-300 ${
-        swiped ? 'translate-x-0' : 'translate-x-full'
-      }`}
-    >
-      <Snowflake
-        size={20}
-        className={`text-white ${isFrozen ? 'fill-white' : ''}`}
-      />
-    </button>
+}: TodoActionsProps) => {
+  if (!swiped) return null;
 
-    <button
-      onClick={onDelete}
-      aria-label="Удалить задачу"
-      className={`absolute top-0 right-0 h-full w-22 rounded-[16px] bg-red-500/90 hover:bg-red-500/80 flex items-center justify-center transition-transform duration-300 ${
-        swiped ? 'translate-x-0' : 'translate-x-full'
-      }`}
-    >
-      <Trash2 size={20} className="text-white" />
-    </button>
-  </>
-);
+  return (
+    <div className="absolute right-0 flex flex-row gap-2 mr-2">
+      <button
+        onClick={onFreeze}
+        aria-label={isFrozen ? 'Разморозить задачу' : 'Заморозить задачу'}
+        className=" cursor-pointer h-21.5 w-21.5 border-1 border-gray-200 rounded-[24px] bg-gray-100 hover:bg-gray-200/70 flex items-center justify-center"
+      >
+        <Snowflake
+          size={20}
+          className={`text-blue-500 ${isFrozen ? 'fill-white' : ''}`}
+        />
+      </button>
+
+      <button
+        onClick={onDelete}
+        aria-label="Удалить задачу"
+        className="cursor-pointer h-21.5 w-21.5 border-1 border-gray-200 rounded-[24px] bg-gray-100/90 hover:bg-gray-200/70 flex items-center justify-center"
+      >
+        <Trash2 size={20} className="text-red-500" />
+      </button>
+    </div>
+  );
+};

@@ -24,7 +24,7 @@ export const ProgressBar = ({
 
   return (
     <div
-      className={`flex h-10 w-full rounded-[10px] overflow-hidden bg-gray-200 ${
+      className={`flex h-9 w-full rounded-full overflow-hidden bg-gray-200 ${
         disabled ? 'opacity-50' : ''
       }`}
     >
@@ -33,7 +33,7 @@ export const ProgressBar = ({
         return (
           <div
             key={i}
-            className={`flex-1 border-r border-gray-100 last:border-r-0 transition-all duration-200 ${
+            className={`flex-1 border-r h-9 backdrop-blur-md border-gray-100 last:border-r-0 transition-all duration-200 ${
               disabled ? 'pointer-events-none' : ''
             }`}
             style={{

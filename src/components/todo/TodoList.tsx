@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import {
   DndContext,
   closestCenter,
-  KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
@@ -15,7 +14,6 @@ import {
 } from '@dnd-kit/core';
 import {
   SortableContext,
-  sortableKeyboardCoordinates,
   useSortable,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
@@ -34,10 +32,8 @@ export const TodoList = () => {
     useSensor(PointerSensor, {
       activationConstraint: {
         distance: 8,
+        ignore: '[data-no-drag]',
       },
-    }),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
     }),
   );
 
@@ -59,7 +55,7 @@ export const TodoList = () => {
   };
 
   return (
-    <div className="space-y-2 px-2 pb-20 pt-[72px]">
+    <div className="space-y-2 px-0 pb-24.5 pt-[68px]">
       {isClient ? (
         todos.length > 0 ? (
           <DndContext
@@ -78,7 +74,7 @@ export const TodoList = () => {
             </SortableContext>
           </DndContext>
         ) : (
-          <div className="flex justify-start items-center h-full text-center text-gray-500">
+          <div className="flex justify-start items-center font-h-full text-center text-gray-500 pl-4">
             пусто
           </div>
         )
