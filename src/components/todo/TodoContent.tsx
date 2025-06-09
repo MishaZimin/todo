@@ -48,7 +48,7 @@ export const TodoContent = ({
       <div className="px-2 py-0.5 min-h-[32px] w-full" onClick={onClick}>
         <input
           ref={inputRef}
-          readOnly={!isEditing}
+          disabled={isFrozen}
           value={editedText}
           onChange={(e) => onTextChange(e.target.value)}
           onBlur={onTextCommit}
