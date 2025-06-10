@@ -20,7 +20,7 @@ export const TodoActions = ({
       <button
         onClick={onFreeze}
         aria-label={isFrozen ? 'Разморозить задачу' : 'Заморозить задачу'}
-        className=" cursor-pointer h-21.5 w-21.5 border-1 border-gray-200 rounded-[24px] bg-gray-100 hover:bg-gray-200/70 flex items-center justify-center"
+        className=" cursor-pointer h-21.5 w-21.5 border-1 border-zinc-700 rounded-[24px] bg-zinc-800 hover:bg-zinc-700/70 flex items-center justify-center"
       >
         <Snowflake
           size={20}
@@ -31,7 +31,7 @@ export const TodoActions = ({
       <button
         onClick={onDelete}
         aria-label="Удалить задачу"
-        className="cursor-pointer h-21.5 w-21.5 border-1 border-gray-200 rounded-[24px] bg-gray-100/90 hover:bg-gray-200/70 flex items-center justify-center"
+        className=" cursor-pointer h-21.5 w-21.5 border-1 border-zinc-700 rounded-[24px] bg-zinc-800 hover:bg-zinc-700/70 flex items-center justify-center"
       >
         <Trash2 size={20} className="text-red-500" />
       </button>

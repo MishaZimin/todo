@@ -24,7 +24,7 @@ export const TodoList = memo(() => {
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
-      activationConstraint: { distance: 10, ignore: '[data-no-drag]' },
+      activationConstraint: { distance: 8, ignore: '[data-no-drag]' },
     }),
   );
 

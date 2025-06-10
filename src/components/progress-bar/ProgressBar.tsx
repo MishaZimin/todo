@@ -2,14 +2,14 @@
 
 import React, { useMemo, useCallback, useState } from 'react';
 
-const getMacColor = (value: number): string => {
-  if (value <= 2) return '#ff5f57';
-  if (value <= 6) return '#febc2e';
-  return '#28c840';
+const getMacTailwindColor = (value: number): string => {
+  if (value <= 2) return 'bg-red-500';
+  if (value <= 6) return 'bg-amber-400';
+  return 'bg-green-500';
 };
 
 const BAR_COUNT = 10;
-const barArray = Array(BAR_COUNT).fill(null); // Вынесено за пределы компонента
+const barArray = Array(BAR_COUNT).fill(null);
 
 export const ProgressBar = React.memo(
   ({
@@ -24,8 +24,9 @@ export const ProgressBar = React.memo(
     const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
     const activeIndex = hoverIndex !== null ? hoverIndex : progress - 1;
-    const activeColor = useMemo(
-      () => (activeIndex >= 0 ? getMacColor(activeIndex) : '#e5e7eb'),
+    const activeColorClass = useMemo(
+      () =>
+        activeIndex >= 0 ? getMacTailwindColor(activeIndex) : 'bg-zinc-800',
       [activeIndex],
     );
 
@@ -47,23 +48,25 @@ export const ProgressBar = React.memo(
 
     return (
       <div
-        className={`flex h-9 w-full rounded-full overflow-hidden bg-gray-200 ${
+        className={`flex h-9 w-full rounded-full overflow-hidden bg-zinc-900 ${
           disabled ? 'opacity-50' : ''
         }`}
         onMouseLeave={() => !disabled && setHoverIndex(null)}
       >
         {barArray.map((_, i) => {
-          const shouldHighlight = i <= activeIndex;
+          const isActive = i <= activeIndex;
+          const isHovered = hoverIndex !== null && i <= hoverIndex;
+
           return (
             <div
               key={i}
-              className={`flex-1 border-r h-9 border-gray-100 last:border-r-0 ${
-                disabled ? 'pointer-events-none' : 'cursor-pointer'
-              }`}
-              style={{
-                backgroundColor: shouldHighlight ? activeColor : '#e5e7eb',
-                opacity: hoverIndex !== null && i <= hoverIndex ? 0.8 : 1,
-              }}
+              className={`
+                flex-1 h-9 last:border-r-0 border-r border-zinc-800
+                ${isActive ? activeColorClass : 'bg-zinc-800/40'}
+                ${isHovered ? 'opacity-80' : ''}
+                ${disabled ? 'pointer-events-none' : 'cursor-pointer'}
+                transition-opacity duration-200
+              `}
               onClick={handleClick(i)}
               onMouseEnter={handleMouseEnter(i)}
               aria-label={`Установить ${(i + 1) * 10}% выполнения`}

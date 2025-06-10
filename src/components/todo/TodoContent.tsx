@@ -25,7 +25,6 @@ export const TodoContent = ({
   onProgressChange,
 }: TodoContentProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-
   const wasEditing = useRef(false);
 
   useEffect(() => {
@@ -39,12 +38,12 @@ export const TodoContent = ({
 
   return (
     <div
-      className={`relative bg-gray-100 border border-gray-200 rounded-[24px] p-1.5  ${
+      className={`relative bg-zinc-800 border border-zinc-700 rounded-[24px] p-1.5  ${
         isFrozen ? 'pointer-events-none bg-gray-50' : ''
       }`}
     >
       {isFrozen && (
-        <div className="absolute inset-0 rounded-[24px] bg-gray-100/80  pointer-events-none" />
+        <div className="absolute inset-0 rounded-[24px] bg-zinc-700/90   pointer-events-none" />
       )}
 
       <div className="px-2 py-0.5 min-h-[32px] w-full" onClick={onClick}>
@@ -53,9 +52,8 @@ export const TodoContent = ({
           disabled={isFrozen}
           value={editedText}
           onChange={(e) => onTextChange(e.target.value)}
-          onBlur={onTextCommit}
           onKeyDown={(e) => e.key === 'Enter' && onTextCommit(e)}
-          className={`w-full bg-transparent border-none outline-none text-gray-800 font-medium text-lg ${
+          className={`w-full bg-transparent border-none outline-none text-zinc-300 font-medium text-lg ${
             isEditing ? 'cursor-text' : 'cursor-pointer'
           }`}
           onClick={(e) => {
