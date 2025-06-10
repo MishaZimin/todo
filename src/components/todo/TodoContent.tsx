@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRef, useEffect } from 'react';
 import { ProgressBar } from '../progress-bar/ProgressBar';
@@ -16,7 +15,6 @@ type TodoContentProps = {
 };
 
 export const TodoContent = ({
-  text,
   progress,
   isFrozen,
   isEditing,
@@ -28,16 +26,20 @@ export const TodoContent = ({
 }: TodoContentProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const wasEditing = useRef(false);
+
   useEffect(() => {
-    if (isEditing) {
+    if (isEditing && !wasEditing.current) {
       inputRef.current?.focus();
-      onTextChange(text);
+      wasEditing.current = true;
+    } else if (!isEditing) {
+      wasEditing.current = false;
     }
   }, [isEditing]);
 
   return (
     <div
-      className={`relative bg-gray-100 border border-gray-200 rounded-[24px] p-1.5 transition-all duration-300 ${
+      className={`relative bg-gray-100 border border-gray-200 rounded-[24px] p-1.5  ${
         isFrozen ? 'pointer-events-none bg-gray-50' : ''
       }`}
     >

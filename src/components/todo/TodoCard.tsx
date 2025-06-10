@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { useState, useEffect } from 'react';
 import { useSetAtom } from 'jotai';
 import { useSwipeable } from 'react-swipeable';
@@ -13,7 +14,7 @@ type TodoCardProps = {
   className?: string;
 };
 
-export const TodoCard = ({ todo, className = '' }: TodoCardProps) => {
+export const TodoCard = memo(({ todo, className = '' }: TodoCardProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(todo.text);
   const [swiped, setSwiped] = useState(false);
@@ -65,7 +66,7 @@ export const TodoCard = ({ todo, className = '' }: TodoCardProps) => {
   return (
     <div
       {...handlers}
-      className={`px-2 relative overflow-hidden transition-all duration-300 ease-in-out transform ${className} ${
+      className={`px-2 relative overflow-hidden transition-transform duration-300 ease-in-out ${className} ${
         isExiting
           ? 'opacity-0 scale-95 -translate-x-2'
           : isMounted
@@ -102,4 +103,6 @@ export const TodoCard = ({ todo, className = '' }: TodoCardProps) => {
       </div>
     </div>
   );
-};
+});
+
+TodoCard.displayName = 'TodoCard';
