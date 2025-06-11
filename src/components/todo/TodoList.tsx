@@ -1,7 +1,6 @@
 'use client';
 
 import { useAtomValue, useSetAtom } from 'jotai';
-import { TodoCard } from '@/components/todo/TodoCard';
 import { todosAtom } from '@/shared/lib/store';
 import {
   DndContext,
@@ -17,6 +16,7 @@ import {
 } from '@dnd-kit/sortable';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import { memo, useCallback } from 'react';
+import { SortableTodoCard } from './SortableTodoCard';
 
 export const TodoList = memo(() => {
   const todos = useAtomValue(todosAtom);
@@ -56,7 +56,7 @@ export const TodoList = memo(() => {
         >
           <SortableContext items={todos} strategy={verticalListSortingStrategy}>
             {todos.map((todo) => (
-              <TodoCard key={todo.id} todo={todo} />
+              <SortableTodoCard key={todo.id} todo={todo} />
             ))}
           </SortableContext>
         </DndContext>
