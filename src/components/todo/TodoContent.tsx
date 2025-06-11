@@ -53,6 +53,9 @@ export const TodoContent = ({
           value={editedText}
           onChange={(e) => onTextChange(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && onTextCommit(e)}
+          spellCheck={false}
+          autoCorrect="off"
+          autoCapitalize="off"
           className={`w-full bg-transparent border-none outline-none text-zinc-300 font-medium text-lg ${
             isEditing ? 'cursor-text' : 'cursor-pointer'
           }`}
