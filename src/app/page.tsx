@@ -6,7 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 
 export default function Home() {
   return (
-    <div className="w-full relative touch-none">
+    <div className="w-full relative touch-pan-y">
       <Header />
       <TodoList />
       <Footer />
