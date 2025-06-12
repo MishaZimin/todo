@@ -16,7 +16,7 @@ export const TodoActions = ({
   if (!swiped) return null;
 
   return (
-    <div className="absolute right-0 flex flex-row gap-2 mr-2">
+    <div className="absolute right-0 flex flex-row gap-2 mr-2 desktop:mr-[202px]">
       <button
         onClick={onFreeze}
         aria-label={isFrozen ? 'Разморозить задачу' : 'Заморозить задачу'}
@@ -27,7 +27,6 @@ export const TodoActions = ({
           className={`text-blue-500 ${isFrozen ? 'fill-white' : ''}`}
         />
       </button>
-
       <button
         onClick={onDelete}
         aria-label="Удалить задачу"

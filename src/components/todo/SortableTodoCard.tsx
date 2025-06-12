@@ -19,7 +19,13 @@ export const SortableTodoCard = ({ todo }: Props) => {
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+    <div
+      className="flex flex-row justify-center"
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+    >
       <TodoCard todo={todo} />
     </div>
   );

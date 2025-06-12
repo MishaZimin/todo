@@ -61,7 +61,7 @@ export const TodoList = memo(() => {
           </SortableContext>
         </DndContext>
       ) : (
-        <div className="flex justify-start items-center font-h-full text-center text-gray-500 pl-4">
+        <div className="flex justify-start desktop:max-w-[500px] items-center font-h-full text-center text-gray-500 pl-4 mx-auto ">
           пусто
         </div>
       )}

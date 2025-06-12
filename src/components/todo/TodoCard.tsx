@@ -66,7 +66,7 @@ export const TodoCard = memo(({ todo, className = '' }: TodoCardProps) => {
   return (
     <div
       {...handlers}
-      className={`px-2 relative overflow-hidden transition-transform duration-300 ease-in-out ${className} ${
+      className={`  relative overflow-hidden desktop:min-w-[892px] desktop:max-w-[892px]  w-full transition-transform duration-300 ease-in-out  flex justify-center ${className} ${
         isExiting
           ? 'opacity-0 scale-95 -translate-x-2'
           : isMounted
@@ -82,7 +82,7 @@ export const TodoCard = memo(({ todo, className = '' }: TodoCardProps) => {
       />
 
       <div
-        className={`transition-transform duration-300 ${
+        className={`px-2 transition-transform duration-300 desktop:w-[504px]  w-full ${
           swiped ? '-translate-x-[188px]' : '-translate-x-[-0px]'
         }`}
       >

@@ -61,10 +61,20 @@ export const ProgressBar = React.memo(
             <div
               key={i}
               className={`
-                flex-1 h-9 last:border-r-0 border-r border-zinc-800
-                ${isActive ? activeColorClass : 'bg-zinc-800/40'}
+                flex-1 h-9 last:border-r-0 border-r-2 
+                ${
+                  isActive
+                    ? disabled
+                      ? 'bg-zinc-600'
+                      : activeColorClass
+                    : 'bg-zinc-800/40'
+                }
                 ${isHovered ? 'opacity-80' : ''}
-                ${disabled ? 'pointer-events-none' : 'cursor-pointer'}
+                ${
+                  disabled
+                    ? ' border-zinc-700/90 pointer-events-none'
+                    : 'border-zinc-800 cursor-pointer'
+                }
                 transition-opacity duration-200
               `}
               onClick={handleClick(i)}
